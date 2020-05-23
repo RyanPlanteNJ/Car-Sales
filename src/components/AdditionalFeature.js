@@ -1,12 +1,22 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { addFeature } from "../actions/action";
 
 const AdditionalFeature = props => {
+  const features = useSelector(state => state.additionalFeatures)
+  const dispatch = useDispatch()
+
   return (
-    <li>
-      {/* Add an onClick that will let you add a feature to your car */}
-      <button className="button">Add</button>
-      {props.feature.name} (+{props.feature.price})
+  <>
+    {features.map(feature => {
+      return (
+      <li>
+        <button className="button" id={feature.id} onClick={(e) => dispatch(addFeature(e.target.id))}>Add</button>
+      {feature.name} (+{feature.price})
     </li>
+    )
+    })}
+  </>
   );
 };
 

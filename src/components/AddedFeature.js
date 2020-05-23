@@ -1,9 +1,9 @@
 import React from 'react';
-import { removeFeature } from '../actions/index';
+import { removeFeature } from '../actions/action';
 import { useSelector, useDispatch } from 'react-redux';
 
 const AddedFeature = props => {
-  const features = useSelector(state = state.car.features)
+  const features = useSelector(state => state.car.features)
   const dispatch = useDispatch();
   return (
     <>
