@@ -1,12 +1,21 @@
 import React from 'react';
+import { removeFeature } from '../actions/action';
+import { useSelector, useDispatch } from 'react-redux';
 
 const AddedFeature = props => {
+  const features = useSelector(state => state.car.features)
+  const dispatch = useDispatch();
   return (
-    <li>
-      {/* Add an onClick to run a function to remove a feature */}
-      <button className="button">X</button>
-      {props.feature.name}
+    <>
+      {features.map(item => {
+        return(
+         <li>
+          <button className="button"id={item.id} onClick={(e) => dispatch(removeFeature(e.target.id))}>X</button>
+      {item.feature}
     </li>
+     );
+      })}
+    </>
   );
 };
 
